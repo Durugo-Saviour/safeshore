@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-950: #030712;
+  --color-navy-900: #0a1628;
+  --color-navy-800: #0f1f3d;
+  --color-navy-700: #1a2d4a;
+  --color-brand-red: #dc2626;
+  --color-brand-gold: #f59e0b;
+  --color-brand-blue: #3b82f6;
+  --font-display: "Syne", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    @apply bg-navy-950 text-slate-300 antialiased overflow-x-hidden;
+    font-family: var(--font-body);
+  }
+
+  ::selection {
+    @apply bg-brand-red/40 text-white;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-linear-to-r from-white via-slate-200 to-slate-400;
+  }
+
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-linear-to-r from-brand-gold via-amber-300 to-brand-gold;
+  }
+
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+
+  .glass-strong {
+    @apply bg-navy-900/80 backdrop-blur-2xl border border-white/10;
+  }
+
+  .glow-red {
+    box-shadow: 0 0 60px rgba(220, 38, 38, 0.15);
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+}
