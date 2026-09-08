@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useLocation } from 'react-router-dom'
 import Navbar from './Navbar'
 import Footer from './Footer'
+import Chatbot from '../ui/Chatbot'
 import { useSmoothScroll } from '../../hooks/useSmoothScroll'
 
 const pageVariants = {
@@ -32,6 +33,7 @@ export default function Layout() {
         </motion.main>
       </AnimatePresence>
       <Footer />
+      <Chatbot />
     </div>
   )
 }
