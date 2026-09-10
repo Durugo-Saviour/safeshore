@@ -79,21 +79,29 @@ export default function ProjectsPage() {
             title="Operations in Action"
             description="Field operations, equipment servicing, and safety compliance work across Nigeria."
           />
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {gallery.map((src, i) => (
-              <FadeIn key={src} delay={i * 0.05}>
-                <motion.div
-                  whileHover={{ scale: 1.03 }}
-                  className={`rounded-xl overflow-hidden ${i === 0 ? 'col-span-2 row-span-2' : ''}`}
+          <div className="relative w-full overflow-hidden py-10 -mx-6 px-6">
+            <motion.div
+              className="flex gap-4 shrink-0"
+              animate={{ x: ['0%', '-50%'] }}
+              transition={{
+                duration: 40,
+                ease: 'linear',
+                repeat: Infinity,
+              }}
+            >
+              {[...gallery, ...gallery].map((src, i) => (
+                <div
+                  key={`${src}-${i}`}
+                  className="w-[280px] md:w-[400px] h-[200px] md:h-[300px] shrink-0 rounded-2xl overflow-hidden"
                 >
                   <img
                     src={src}
                     alt={`Gallery ${i + 1}`}
-                    className={`w-full object-cover ${i === 0 ? 'h-full min-h-[300px]' : 'h-48'}`}
+                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
                   />
-                </motion.div>
-              </FadeIn>
-            ))}
+                </div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>

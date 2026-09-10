@@ -103,6 +103,42 @@ export const regulatory = ['NUPRC', 'NIMASA', 'NCDMB', 'NMDPRA', 'SOLAS', 'SON']
 
 export const projects = [
   {
+    title: 'Operations on a Rig',
+    desc: 'SHORESAFE OPERATIONS STAFF ON A RIG ensuring strict safety compliance and integrity checks.',
+    image: '/images/new-project-1.jpg',
+    tag: 'Operations',
+  },
+  {
+    title: 'Ladder & Gangway Construction',
+    desc: 'Construction of a Pull-Up Ladder & Gangway between Two Close By Oil Production and FSOP Facilities.',
+    image: '/images/new-project-2.jpg',
+    tag: 'Construction',
+  },
+  {
+    title: 'FFE Cylinders Recertification',
+    desc: 'FFEs: 500kg Cylinders after complete Servicing, Recertification, Ready for Reinstallation at Client\'s Offshores Facility.',
+    image: '/images/new-project-3.jpg',
+    tag: 'Recertification',
+  },
+  {
+    title: 'Anchor Winch Reconstruction',
+    desc: 'Reconstruction & replacement of a damaged Anchor Winch. Picture show: from start to finish.',
+    image: '/images/new-project-4.jpg',
+    tag: 'Reconstruction',
+  },
+  {
+    title: 'FFE Service Station Operations',
+    desc: 'Completed Servicing & Recertification Cycle of the FFEs at SHORESAFE\'s FFE Service Station. Ready for Client\'s Pickup.',
+    image: '/images/new-project-5.jpg',
+    tag: 'Servicing',
+  },
+  {
+    title: 'Crane Head Block Reconstruction',
+    desc: 'Reconstruction & replacement of a damaged CRANE HEAD BLOCK. Picture show: from start to finish.',
+    image: '/images/new-project-6.jpg',
+    tag: 'Reconstruction',
+  },
+  {
     title: 'FPSO Mystras — OML 119',
     desc: 'Completed inspection, integrity testing, hydro-testing, and servicing of all Fire Fighting Equipment.',
     image: '/images/project-loadtest.jpg',
@@ -120,24 +156,6 @@ export const projects = [
     image: '/images/gallery-3.jpg',
     tag: 'Completed',
   },
-  {
-    title: 'Lifeboat & Davit Load Testing',
-    desc: 'Comprehensive lifeboat, davit and winch inspection, load testing and recertification.',
-    image: '/images/gallery-6.jpg',
-    tag: 'Completed',
-  },
-  {
-    title: 'Liferaft Supply & Recertification',
-    desc: 'Supply, inspection, servicing, repair and re-certification for regional maritime operators.',
-    image: '/images/gallery-7.jpg',
-    tag: 'Completed',
-  },
-  {
-    title: 'Multi-Vessel FFE Campaign',
-    desc: 'Complex multi-vessel fire fighting equipment refitting for E&P support contractors.',
-    image: '/images/gallery-9.jpg',
-    tag: 'Completed',
-  },
 ]
 
 export const clients = [
@@ -152,16 +170,18 @@ export const clients = [
 ]
 
 export const gallery = [
+  '/images/new-project-1.jpg',
+  '/images/new-project-2.jpg',
+  '/images/new-project-3.jpg',
+  '/images/new-project-4.jpg',
+  '/images/new-project-5.jpg',
+  '/images/new-project-6.jpg',
+  '/images/new-project-7.jpg',
+  '/images/new-project-8.jpg',
+  '/images/new-project-9.jpg',
+  '/images/new-project-10.jpg',
+  '/images/new-project-11.jpg',
   '/images/project-fieldwork.jpg',
-  '/images/gallery-2.jpg',
-  '/images/gallery-4.jpg',
-  '/images/gallery-5.jpg',
-  '/images/gallery-8.jpg',
-  '/images/gallery-10.jpg',
-  '/images/gallery-11.jpg',
-  '/images/gallery-12.jpg',
-  '/images/gallery-13.jpg',
-  '/images/gallery-14.jpg',
 ]
 
 export const navLinks = [

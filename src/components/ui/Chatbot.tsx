@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, Send, Bot } from 'lucide-react';
-import { company, services, clients } from '../../data/content';
+import { company, clients } from '../../data/content';
 
 type Message = {
   id: string;
@@ -19,6 +19,7 @@ export default function Chatbot() {
     },
   ]);
   const [input, setInput] = useState('');
+  const [context, setContext] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -29,43 +30,81 @@ export default function Chatbot() {
     scrollToBottom();
   }, [messages, isOpen]);
 
-  const generateResponse = (query: string): string => {
+  const generateResponse = (query: string, currentContext: string | null): { text: string, newContext: string | null } => {
     const q = query.toLowerCase();
     
-    if (q.includes('service') || q.includes('what do you do') || q.includes('offer')) {
-      const serviceList = services.map(s => `- ${s.title}`).join('\n');
-      return `We offer a range of services including:\n\n${serviceList}\n\nCan I provide more details on any of these?`;
+    // Greeting
+    if (/\b(hi|hello|hey|greetings)\b/.test(q)) {
+      return { text: `Hello! How can I assist you today? I can help with information about our services, projects, certifications, or how to contact us.`, newContext: null };
     }
-    
-    if (q.includes('contact') || q.includes('phone') || q.includes('email') || q.includes('address') || q.includes('reach') || q.includes('call')) {
-      return `You can reach us at:\n\nPhone: ${company.phones.join(', ')}\nEmail: ${company.emails.join('\n')}\nAddress: ${company.address}\nHours: ${company.hours}`;
+
+    // Follow-up context checking
+    if (currentContext === 'services') {
+      if (q.includes('more') || q.includes('detail') || q.includes('explain')) {
+        return { text: `Our core services include:\n1. Life-Saving Appliances (LSA)\n2. Fire Fighting Equipment (FFE)\n3. Marine & NDT\n4. SCBA & EEBD Servicing\nWe guarantee OEM compliance. Which one interests you?`, newContext: 'services' };
+      }
+      if (q.includes('fire') || q.includes('ffe')) {
+        return { text: `For Fire Fighting Equipment, we do turnkey testing, servicing of CO2 systems, fire pumps, extinguishers, and detection systems.`, newContext: 'services' };
+      }
+      if (q.includes('lsa') || q.includes('life')) {
+        return { text: `Our LSA services cover full inspection, servicing, load testing, and recertification of liferafts, lifeboats, rescue boats, and davits.`, newContext: 'services' };
+      }
+    }
+
+    if (currentContext === 'contact') {
+      if (q.includes('where') || q.includes('address') || q.includes('location')) {
+        return { text: `We are located at ${company.address}.`, newContext: 'contact' };
+      }
+      if (q.includes('phone') || q.includes('call') || q.includes('number')) {
+        return { text: `You can call us at ${company.phones.join(' or ')}.`, newContext: 'contact' };
+      }
+    }
+
+    // Primary Intent Matching
+    if (q.includes('service') || q.includes('what do you do') || q.includes('offer')) {
+      return { text: `We specialize in Marine and Safety Asset Integrity. We offer LSA, FFE, NDT, and more. Would you like details on a specific service?`, newContext: 'services' };
+    }
+
+    if (q.includes('contact') || q.includes('reach') || q.includes('email') || q.includes('phone')) {
+      return { text: `You can reach us via email at ${company.emails[0]} or call ${company.phones[0]}. Do you need our physical address?`, newContext: 'contact' };
+    }
+
+    if (q.includes('address') || q.includes('location') || q.includes('where')) {
+      return { text: `Our main office is at:\n${company.address}\nLet me know if you need our alternative address.`, newContext: 'contact' };
     }
 
     if (q.includes('client') || q.includes('who have you worked with') || q.includes('customers')) {
-      return `We have proudly worked with clients such as:\n\n${clients.slice(0, 5).join(', ')} and more.`;
+      return { text: `We have proudly served industry leaders like ${clients.slice(0, 4).join(', ')}, among others.`, newContext: 'clients' };
     }
 
-    if (q.includes('where') || q.includes('location')) {
-      return `We are located at:\n${company.address}\n\nAlternative Address:\n${company.addressAlt}`;
+    if (q.includes('project') || q.includes('work') || q.includes('portfolio') || q.includes('experience')) {
+      return { text: `We have a strong track record of complex maintenance campaigns. For example, we recently completed projects for FPSO facilities and multi-vessel FFE campaigns.`, newContext: 'projects' };
     }
 
-    if (q.includes('hello') || q.includes('hi') || q.includes('hey')) {
-      return `Hello! How can I assist you today?`;
-    }
-
-    if (q.includes('name') || q.includes('who are you')) {
-      return `I am the virtual assistant for ${company.name}.`;
+    if (q.includes('certif') || q.includes('approval') || q.includes('nimasa') || q.includes('nuprc')) {
+      return { text: `We are fully certified by NUPRC, NIMASA, and adhere strictly to SOLAS and NCDMB standards. Compliance is our foundation.`, newContext: 'certifications' };
     }
 
     if (q.includes('hour') || q.includes('time') || q.includes('open')) {
-      return `Our business hours are: ${company.hours}.`;
+      return { text: `Our operating hours are: ${company.hours}.`, newContext: null };
     }
     
     if (q.includes('cac') || q.includes('registration')) {
-      return `Our CAC Registration Number is ${company.cac}.`;
+      return { text: `Our CAC Registration Number is ${company.cac}.`, newContext: null };
     }
 
-    return "I'm sorry, I couldn't quite understand that. You can ask me about our services, contact details, operating hours, or clients.";
+    if (q.includes('cost') || q.includes('price') || q.includes('quote')) {
+      return { text: `For pricing and custom quotes, please contact our sales team at ${company.emails[0]} or call ${company.phones[0]}.`, newContext: 'contact' };
+    }
+
+    if (q.includes('thank')) {
+      return { text: `You're very welcome! Let me know if there's anything else I can assist you with.`, newContext: null };
+    }
+
+    return { 
+      text: `I'm an automated assistant and might not have the specific answer. However, I can easily help you with:\n- Our Services & Capabilities\n- Contact & Location\n- Past Projects & Clients\n- Certifications\n\nWhat would you like to know?`, 
+      newContext: currentContext 
+    };
   };
 
   const handleSend = (e: React.FormEvent) => {
@@ -78,17 +117,20 @@ export default function Chatbot() {
 
     // Simulate thinking delay
     setTimeout(() => {
+      const response = generateResponse(userMessage.text, context);
+      setContext(response.newContext);
+      
       const botResponse: Message = {
         id: (Date.now() + 1).toString(),
         type: 'bot',
-        text: generateResponse(userMessage.text),
+        text: response.text,
       };
       setMessages(prev => [...prev, botResponse]);
     }, 600);
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[60]">
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -96,8 +138,8 @@ export default function Chatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             transition={{ duration: 0.2 }}
-            className="absolute bottom-16 right-0 w-[350px] glass-strong rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-white/10"
-            style={{ height: '500px' }}
+            className="absolute bottom-16 right-0 w-[calc(100vw-2rem)] md:w-[350px] glass-strong rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-white/10"
+            style={{ height: '500px', maxHeight: '75vh' }}
           >
             {/* Header */}
             <div className="bg-brand-blue/20 border-b border-white/10 text-white p-4 flex justify-between items-center">

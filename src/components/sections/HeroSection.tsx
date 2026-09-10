@@ -15,7 +15,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-linear-to-t from-navy-950 via-transparent to-navy-950/50 z-10" />
       <div className="absolute inset-0 grid-bg opacity-20 z-10 pointer-events-none" />
 
-      <div className="relative z-20 max-w-7xl mx-auto px-6 pt-24 pb-48 md:pt-32 md:pb-40 w-full">
+      <div className="relative z-20 max-w-7xl mx-auto px-6 pt-24 pb-[300px] sm:pb-48 md:pt-32 md:pb-40 w-full">
         <div className="max-w-2xl">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -51,18 +51,18 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="flex flex-wrap gap-4"
+            className="flex flex-col sm:flex-row flex-wrap gap-4"
           >
             <Link
               to="/services"
-              className="group flex items-center gap-2 px-8 py-4 bg-brand-red text-white font-semibold rounded-xl hover:bg-red-700 transition-all hover:shadow-xl hover:shadow-red-500/20"
+              className="w-full sm:w-auto group flex items-center justify-center gap-2 px-8 py-4 bg-brand-red text-white font-semibold rounded-xl hover:bg-red-700 transition-all hover:shadow-xl hover:shadow-red-500/20"
             >
               Explore Services
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <Link
               to="/contact"
-              className="px-8 py-4 glass text-white font-semibold rounded-xl hover:bg-white/10 transition-all"
+              className="w-full sm:w-auto flex items-center justify-center px-8 py-4 glass text-white font-semibold rounded-xl hover:bg-white/10 transition-all"
             >
               Request a Quote
             </Link>
