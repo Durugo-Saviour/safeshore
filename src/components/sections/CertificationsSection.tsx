@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import SectionHeading, { FadeIn } from '../ui/SectionHeading'
 import { certifications, regulatory } from '../../data/content'
+import { Award, Leaf, ShieldCheck } from 'lucide-react'
 
 export default function CertificationsSection() {
   return (
@@ -20,7 +21,10 @@ export default function CertificationsSection() {
                 className="glass rounded-2xl p-10 text-center hover:border-brand-gold/30 transition-all"
               >
                 <div className="w-20 h-20 mx-auto mb-5 rounded-full bg-navy-800 border-2 border-brand-gold/30 flex items-center justify-center">
-                  <span className="font-display text-lg font-bold text-brand-gold">{cert.code}</span>
+                  {cert.icon === 'Award' && <Award className="w-10 h-10 text-brand-gold" />}
+                  {cert.icon === 'Leaf' && <Leaf className="w-10 h-10 text-brand-gold" />}
+                  {cert.icon === 'ShieldCheck' && <ShieldCheck className="w-10 h-10 text-brand-gold" />}
+                  {!cert.icon && <span className="font-display text-lg font-bold text-brand-gold">{cert.code}</span>}
                 </div>
                 <h3 className="font-display text-lg font-bold text-white mb-2">{cert.title}</h3>
                 <p className="text-sm text-slate-500">{cert.desc}</p>

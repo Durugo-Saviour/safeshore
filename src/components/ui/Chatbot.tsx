@@ -40,7 +40,10 @@ export default function Chatbot() {
 
     // Follow-up context checking
     if (currentContext === 'services') {
-      if (q.includes('more') || q.includes('detail') || q.includes('explain')) {
+      if (q.includes('no') || q.includes('nope')) {
+        return { text: `Alright. Is there anything else you'd like to know about Shoresafe?`, newContext: null };
+      }
+      if (q.includes('more') || q.includes('detail') || q.includes('explain') || q.includes('yes') || q.includes('sure') || q.includes('please') || q.includes('ok')) {
         return { text: `Our core services include:\n1. Life-Saving Appliances (LSA)\n2. Fire Fighting Equipment (FFE)\n3. Marine & NDT\n4. SCBA & EEBD Servicing\nWe guarantee OEM compliance. Which one interests you?`, newContext: 'services' };
       }
       if (q.includes('fire') || q.includes('ffe')) {
@@ -57,6 +60,12 @@ export default function Chatbot() {
       }
       if (q.includes('phone') || q.includes('call') || q.includes('number')) {
         return { text: `You can call us at ${company.phones.join(' or ')}.`, newContext: 'contact' };
+      }
+      if (q.includes('yes') || q.includes('sure') || q.includes('please') || q.includes('pls') || q.includes('yep')) {
+        return { text: `Our main office is at:\n${company.address}\n\nOur alternative address is:\n${company.addressAlt}`, newContext: null };
+      }
+      if (q.includes('no') || q.includes('nope') || q.includes('nah')) {
+        return { text: `Alright! Let me know if you need anything else.`, newContext: null };
       }
     }
 
@@ -130,7 +139,7 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[60]">
+    <div className="fixed bottom-20 right-4 md:bottom-6 md:right-6 z-[9999]">
       <AnimatePresence>
         {isOpen && (
           <motion.div

@@ -91,8 +91,8 @@ export default function ServicesPage() {
           />
           <div className="grid md:grid-cols-4 gap-4">
             {[
-              { img: '/images/service-liferaft.jpeg', label: 'Life Rafts' },
-              { img: '/images/service-lifeboat.jpeg', label: 'Life Boats' },
+              { img: '/images/liferafts.jpg', label: 'Life Rafts' },
+              { img: '/images/lifeboat.jpg', label: 'Life Boats' },
               { img: '/images/service-rescueboat.jpeg', label: 'Rescue Boats' },
               { img: '/images/service-davit.jpeg', label: 'Davits & Winches' },
             ].map((item, i) => (

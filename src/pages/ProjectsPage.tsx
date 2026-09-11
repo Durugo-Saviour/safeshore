@@ -1,10 +1,40 @@
+import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import SectionHeading, { FadeIn } from '../components/ui/SectionHeading'
 import ClientsSection from '../components/sections/ClientsSection'
 import CTASection from '../components/sections/CTASection'
 import { projects, gallery } from '../data/content'
 
 export default function ProjectsPage() {
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [isHovered, setIsHovered] = useState(false)
+
+  useEffect(() => {
+    let animationFrameId: number
+    const scroll = () => {
+      if (scrollRef.current && !isHovered) {
+        scrollRef.current.scrollLeft += 1.5
+        if (scrollRef.current.scrollLeft >= scrollRef.current.scrollWidth / 2) {
+          scrollRef.current.scrollLeft = 0
+        }
+      }
+      animationFrameId = requestAnimationFrame(scroll)
+    }
+    animationFrameId = requestAnimationFrame(scroll)
+    return () => cancelAnimationFrame(animationFrameId)
+  }, [isHovered])
+
+  const manualScroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const scrollAmount = 350
+      scrollRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      })
+    }
+  }
+
   return (
     <>
       <section className="pt-32 pb-20 relative overflow-hidden">
@@ -79,29 +109,41 @@ export default function ProjectsPage() {
             title="Operations in Action"
             description="Field operations, equipment servicing, and safety compliance work across Nigeria."
           />
-          <div className="relative w-full overflow-hidden py-10 -mx-6 px-6">
-            <motion.div
-              className="flex gap-4 shrink-0"
-              animate={{ x: ['0%', '-50%'] }}
-              transition={{
-                duration: 40,
-                ease: 'linear',
-                repeat: Infinity,
-              }}
+          <div 
+            className="relative w-full py-10 -mx-6 px-6 group"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <button 
+              onClick={() => manualScroll('left')}
+              className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-navy-950/80 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-brand-red backdrop-blur-sm shadow-xl cursor-pointer"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button 
+              onClick={() => manualScroll('right')}
+              className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-navy-950/80 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-brand-red backdrop-blur-sm shadow-xl cursor-pointer"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+            
+            <div 
+              ref={scrollRef}
+              className="flex gap-4 overflow-x-auto hide-scrollbar scroll-smooth snap-x snap-mandatory"
             >
               {[...gallery, ...gallery].map((src, i) => (
                 <div
                   key={`${src}-${i}`}
-                  className="w-[280px] md:w-[400px] h-[200px] md:h-[300px] shrink-0 rounded-2xl overflow-hidden"
+                  className="w-[280px] md:w-[400px] h-[200px] md:h-[300px] shrink-0 rounded-2xl overflow-hidden snap-center"
                 >
                   <img
                     src={src}
                     alt={`Gallery ${i + 1}`}
-                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover hover:scale-110 transition-transform duration-700 pointer-events-none"
                   />
                 </div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

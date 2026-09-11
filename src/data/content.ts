@@ -24,7 +24,7 @@ export const services = [
     number: '01',
     title: 'Life-Saving Appliances (LSA)',
     description: 'Full inspection, servicing, load testing, and recertification of liferafts, lifeboats, rescue boats, and davit launch systems.',
-    image: '/images/service-liferaft.jpeg',
+    image: '/images/liferafts.jpg',
     items: [
       'Survival Craft: Liferafts, Lifeboats, Rescue Boats',
       'Deployment Systems: Davits and Winches',
@@ -94,14 +94,26 @@ export const whyUs = [
 ]
 
 export const certifications = [
-  { code: '9001', title: 'ISO 9001:2015', desc: 'Quality Management System' },
-  { code: '14001', title: 'ISO 14001:2015', desc: 'Environmental Management' },
-  { code: '45001', title: 'ISO 45001:2018', desc: 'Occupational Health & Safety' },
+  { code: '9001', title: 'ISO 9001:2015', desc: 'Quality Management System', icon: 'Award' },
+  { code: '14001', title: 'ISO 14001:2015', desc: 'Environmental Management', icon: 'Leaf' },
+  { code: '45001', title: 'ISO 45001:2018', desc: 'Occupational Health & Safety', icon: 'ShieldCheck' },
 ]
 
 export const regulatory = ['NUPRC', 'NIMASA', 'NCDMB', 'NMDPRA', 'SOLAS', 'SON']
 
 export const projects = [
+  {
+    title: 'Fire Extinguishers & Purposes',
+    desc: 'Various & Major Types of Fire Extinguishers & its Purposes.',
+    image: '/images/fire.jpg',
+    tag: 'Fire Safety',
+  },
+  {
+    title: 'Life Boat Maintenance',
+    desc: 'Life Boat Shoresafe Provide Maintenance Services.',
+    image: '/images/lifeboat.jpg',
+    tag: 'Maintenance',
+  },
   {
     title: 'Operations on a Rig',
     desc: 'SHORESAFE OPERATIONS STAFF ON A RIG ensuring strict safety compliance and integrity checks.',
@@ -170,6 +182,9 @@ export const clients = [
 ]
 
 export const gallery = [
+  '/images/liferafts.jpg',
+  '/images/fire.jpg',
+  '/images/lifeboat.jpg',
   '/images/new-project-1.jpg',
   '/images/new-project-2.jpg',
   '/images/new-project-3.jpg',

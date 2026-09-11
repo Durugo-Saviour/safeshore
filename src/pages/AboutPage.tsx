@@ -59,7 +59,7 @@ export default function AboutPage() {
               <img
                 src="/images/hero-cover.png"
                 alt="Shoresafe operations"
-                className="rounded-2xl w-full h-[450px] object-cover glow-red"
+                className="rounded-2xl w-full h-auto max-h-[600px] object-contain glow-red bg-navy-950/50 p-2 border border-white/5"
               />
             </FadeIn>
             <FadeIn delay={0.2}>
