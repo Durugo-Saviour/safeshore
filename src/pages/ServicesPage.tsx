@@ -1,15 +1,21 @@
+import { lazy, Suspense } from 'react'
 import { motion } from 'framer-motion'
 import { Check } from 'lucide-react'
 import SectionHeading, { FadeIn } from '../components/ui/SectionHeading'
 import CTASection from '../components/sections/CTASection'
 import { services } from '../data/content'
 
+const SafetyScene = lazy(() => import('../components/three/SafetyScene'))
+
 export default function ServicesPage() {
   return (
     <>
-      <section className="pt-32 pb-20 relative overflow-hidden">
+      <section className="pt-32 pb-20 relative overflow-hidden min-h-[500px]">
         <div className="absolute inset-0 bg-linear-to-b from-navy-900 to-navy-950" />
         <div className="absolute inset-0 grid-bg opacity-20" />
+        <Suspense fallback={null}>
+          <SafetyScene className="opacity-40 md:opacity-30" />
+        </Suspense>
         <div className="max-w-7xl mx-auto px-6 relative text-center">
           <motion.span
             initial={{ opacity: 0 }}

@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import Chatbot from '../ui/Chatbot'
+import MouseFollower from '../ui/MouseFollower'
 import { useSmoothScroll } from '../../hooks/useSmoothScroll'
 
 const pageVariants = {
@@ -34,6 +35,7 @@ export default function Layout() {
       </AnimatePresence>
       <Footer />
       <Chatbot />
+      <MouseFollower />
     </div>
   )
 }

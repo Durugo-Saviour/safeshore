@@ -1,5 +1,5 @@
 import { useRef, useMemo } from 'react'
-import { useFrame } from '@react-three/fiber'
+import { useFrame, useThree } from '@react-three/fiber'
 import { Float, Stars } from '@react-three/drei'
 import * as THREE from 'three'
 
@@ -151,6 +151,34 @@ function Particles({ count = 200 }) {
   )
 }
 
+function MouseTracker() {
+  const groupRef = useRef<THREE.Group>(null)
+  const { pointer } = useThree()
+
+  useFrame(() => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y = THREE.MathUtils.lerp(
+        groupRef.current.rotation.y,
+        pointer.x * 0.15,
+        0.05
+      )
+      groupRef.current.rotation.x = THREE.MathUtils.lerp(
+        groupRef.current.rotation.x,
+        pointer.y * 0.08,
+        0.05
+      )
+    }
+  })
+
+  return (
+    <group ref={groupRef}>
+      <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.4}>
+        <Platform />
+      </Float>
+    </group>
+  )
+}
+
 export default function HeroScene() {
   return (
     <>
@@ -163,9 +191,7 @@ export default function HeroScene() {
 
       <Stars radius={50} depth={50} count={3000} factor={3} saturation={0.2} fade speed={0.5} />
 
-      <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.4}>
-        <Platform />
-      </Float>
+      <MouseTracker />
 
       <Ocean />
       <Particles />

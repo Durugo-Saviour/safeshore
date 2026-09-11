@@ -1,8 +1,12 @@
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { Shield, Eye, Gem, CheckCircle, Leaf, GraduationCap } from 'lucide-react'
+import { Canvas } from '@react-three/fiber'
+import { Suspense, lazy } from 'react'
 import SectionHeading, { FadeIn } from '../components/ui/SectionHeading'
 import CTASection from '../components/sections/CTASection'
 import { company } from '../data/content'
+
+const FloatingParticles = lazy(() => import('../components/three/FloatingParticles'))
 
 const pillars = [
   { icon: Shield, label: 'Safety' },
@@ -22,9 +26,22 @@ const hseItems = [
 export default function AboutPage() {
   return (
     <>
-      <section className="pt-32 pb-20 relative overflow-hidden">
+      <section className="pt-32 pb-20 relative overflow-hidden min-h-[500px]">
         <div className="absolute inset-0 bg-linear-to-b from-navy-900 to-navy-950" />
         <div className="absolute inset-0 grid-bg opacity-20" />
+        
+        {/* 3D Background Particles */}
+        <div className="absolute inset-0 pointer-events-none">
+          <Canvas
+            camera={{ position: [0, 0, 10], fov: 50 }}
+            dpr={[1, 1.5]}
+            gl={{ antialias: true, alpha: true }}
+          >
+            <Suspense fallback={null}>
+              <FloatingParticles count={250} color="#dc2626" speed={0.03} spread={25} />
+            </Suspense>
+          </Canvas>
+        </div>
         <div className="max-w-7xl mx-auto px-6 relative text-center">
           <motion.span
             initial={{ opacity: 0 }}
