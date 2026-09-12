@@ -25,8 +25,8 @@ export default function AboutSection() {
                 className="relative rounded-2xl overflow-hidden glow-red"
               >
                 <img
-                  src="/images/group-personnel.jpg"
-                  alt="Shoresafe Team Operations"
+                  src="/images/employee.jpg"
+                  alt="Shoresafe Services team on site in full safety gear"
                   className="w-full h-[500px] object-cover"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-navy-950/80 to-transparent" />

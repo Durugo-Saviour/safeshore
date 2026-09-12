@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Shield, Eye, Gem, CheckCircle, Leaf, GraduationCap } from 'lucide-react'
 import { Canvas } from '@react-three/fiber'
 import { Suspense, lazy } from 'react'
@@ -7,6 +7,7 @@ import CTASection from '../components/sections/CTASection'
 import { company } from '../data/content'
 
 const FloatingParticles = lazy(() => import('../components/three/FloatingParticles'))
+const AboutScene = lazy(() => import('../components/three/AboutScene'))
 
 const pillars = [
   { icon: Shield, label: 'Safety' },
@@ -73,11 +74,18 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <FadeIn>
-              <img
-                src="/images/hero-cover.png"
-                alt="Shoresafe operations"
-                className="rounded-2xl w-full h-auto max-h-[600px] object-contain glow-red bg-navy-950/50 p-2 border border-white/5"
-              />
+              <div className="relative rounded-2xl overflow-hidden glow-red bg-navy-950/50 border border-white/5 h-[300px] sm:h-[400px] lg:h-[500px]">
+                <Canvas
+                  camera={{ position: [0, 1, window.innerWidth < 640 ? 12 : 8], fov: 50 }}
+                  dpr={[1, 1.5]}
+                  gl={{ antialias: true, alpha: true }}
+                  style={{ background: 'transparent' }}
+                >
+                  <Suspense fallback={null}>
+                    <AboutScene />
+                  </Suspense>
+                </Canvas>
+              </div>
             </FadeIn>
             <FadeIn delay={0.2}>
               <h2 className="font-display text-3xl font-bold text-white mb-6">Executive Profile</h2>

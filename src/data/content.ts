@@ -27,7 +27,6 @@ export const services = [
     image: '/images/liferafts.jpg',
     items: [
       'Survival Craft: Liferafts, Lifeboats, Rescue Boats',
-      'Deployment Systems: Davits and Winches',
       'Personal Safety Gear: Life Jackets, Immersion Suits',
       'Load testing and statutory recertification',
     ],
@@ -63,7 +62,7 @@ export const services = [
     number: '04',
     title: 'Platform Revamp',
     description: 'Onshore and offshore platform upgrades — modifying, upgrading, repairing or extending existing facilities.',
-    image: '/images/service-davit.jpeg',
+    image: '/images/service-fabrication.jpg',
     items: [
       'Engineering assessment & modifications',
       'Fabrication & installation',

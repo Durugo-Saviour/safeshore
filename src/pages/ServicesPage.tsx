@@ -95,12 +95,11 @@ export default function ServicesPage() {
             label="Equipment"
             title="Safety Equipment We Service"
           />
-          <div className="grid md:grid-cols-4 gap-4">
+          <div className="grid md:grid-cols-3 gap-4">
             {[
               { img: '/images/liferafts.jpg', label: 'Life Rafts' },
               { img: '/images/lifeboat.jpg', label: 'Life Boats' },
               { img: '/images/service-rescueboat.jpeg', label: 'Rescue Boats' },
-              { img: '/images/service-davit.jpeg', label: 'Davits & Winches' },
             ].map((item, i) => (
               <FadeIn key={item.label} delay={i * 0.1}>
                 <motion.div whileHover={{ y: -4 }} className="glass rounded-xl overflow-hidden">

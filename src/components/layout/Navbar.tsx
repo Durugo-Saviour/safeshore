@@ -1,8 +1,36 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Phone } from 'lucide-react'
+import { Phone } from 'lucide-react'
 import { company, navLinks } from '../../data/content'
+
+function HamburgerButton({ isOpen, onClick }: { isOpen: boolean; onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      className="lg:hidden relative z-[60] w-10 h-10 flex items-center justify-center"
+      aria-label="Toggle menu"
+    >
+      <div className="w-6 h-5 relative flex flex-col justify-between">
+        <motion.span
+          animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          className="block h-[2px] w-full bg-white origin-center"
+        />
+        <motion.span
+          animate={isOpen ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+          transition={{ duration: 0.2 }}
+          className="block h-[2px] w-full bg-white"
+        />
+        <motion.span
+          animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+          transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          className="block h-[2px] w-full bg-white origin-center"
+        />
+      </div>
+    </button>
+  )
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -18,6 +46,23 @@ export default function Navbar() {
   useEffect(() => {
     setMobileOpen(false)
   }, [location.pathname])
+
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [mobileOpen])
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileOpen(false)
+    }
+    window.addEventListener('keydown', handleEscape)
+    return () => window.removeEventListener('keydown', handleEscape)
+  }, [])
 
   return (
     <motion.header
@@ -75,39 +120,78 @@ export default function Navbar() {
           </Link>
         </nav>
 
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden p-2 text-white"
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <HamburgerButton isOpen={mobileOpen} onClick={() => setMobileOpen(!mobileOpen)} />
       </div>
 
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden glass-strong border-t border-white/10 overflow-hidden"
-          >
-            <div className="px-6 py-4 flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className={`px-4 py-3 rounded-lg text-sm font-medium ${
-                    location.pathname === link.path
-                      ? 'bg-brand-red/10 text-white'
-                      : 'text-slate-400'
-                  }`}
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[55]"
+              onClick={() => setMobileOpen(false)}
+            />
+
+            {/* Full-screen menu overlay */}
+            <motion.div
+              initial={{ clipPath: 'circle(0% at calc(100% - 2.5rem) 2.5rem)' }}
+              animate={{ clipPath: 'circle(150% at calc(100% - 2.5rem) 2.5rem)' }}
+              exit={{ clipPath: 'circle(0% at calc(100% - 2.5rem) 2.5rem)' }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="fixed inset-0 z-[56] bg-navy-950/98 flex flex-col justify-center items-center"
+            >
+              <nav className="flex flex-col items-center gap-2">
+                {navLinks.map((link, i) => (
+                  <motion.div
+                    key={link.path}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ delay: 0.1 + i * 0.06, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    <Link
+                      to={link.path}
+                      className={`block text-4xl sm:text-5xl font-display font-bold transition-colors ${
+                        location.pathname === link.path
+                          ? 'text-brand-red'
+                          : 'text-white hover:text-brand-gold'
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                ))}
+
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  transition={{ delay: 0.1 + navLinks.length * 0.06, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  className="mt-6"
                 >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </motion.div>
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center gap-3 px-8 py-4 bg-brand-red text-white text-lg font-semibold rounded-xl hover:bg-red-700 transition-all hover:shadow-lg hover:shadow-red-500/25"
+                  >
+                    <Phone size={18} />
+                    Get Quote
+                  </Link>
+                </motion.div>
+              </nav>
+
+              {/* Decorative accent line */}
+              <motion.div
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ delay: 0.4, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute bottom-12 left-1/2 -translate-x-1/2 w-24 h-[2px] bg-gradient-to-r from-transparent via-brand-red to-transparent"
+              />
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </motion.header>
