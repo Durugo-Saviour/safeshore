@@ -36,7 +36,7 @@ export default function ServicesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-slate-400 max-w-2xl mx-auto"
+            className="text-lg text-slate-300 max-w-2xl mx-auto"
           >
             End-to-end inspection, maintenance, testing, and statutory recertification for critical safety infrastructure.
           </motion.p>
@@ -74,10 +74,10 @@ export default function ServicesPage() {
                 <h2 className="font-display text-3xl md:text-4xl font-bold text-white mt-3 mb-5">
                   {service.title}
                 </h2>
-                <p className="text-slate-400 leading-relaxed mb-8">{service.description}</p>
+                <p className="text-slate-300 leading-relaxed mb-8">{service.description}</p>
                 <ul className="space-y-3">
                   {service.items.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-sm text-slate-400">
+                    <li key={item} className="flex items-start gap-3 text-sm text-slate-300">
                       <Check size={16} className="text-brand-red mt-0.5 shrink-0" />
                       {item}
                     </li>
@@ -92,14 +92,42 @@ export default function ServicesPage() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-6">
           <SectionHeading
-            label="Equipment"
-            title="Safety Equipment We Service"
+            label="LSA Equipment"
+            title="Life-Saving Appliances We Service"
           />
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {[
               { img: '/images/liferafts.jpg', label: 'Life Rafts' },
               { img: '/images/lifeboat.jpg', label: 'Life Boats' },
               { img: '/images/service-rescueboat.jpeg', label: 'Rescue Boats' },
+              { img: '/images/service-scba.jpeg', label: 'SCBA Units' },
+              { img: '/images/infographic-scba-eebd.jpg', label: 'EEBDs' },
+            ].map((item, i) => (
+              <FadeIn key={item.label} delay={i * 0.1}>
+                <motion.div whileHover={{ y: -4 }} className="glass rounded-xl overflow-hidden">
+                  <img src={item.img} alt={item.label} className="w-full h-40 object-cover" />
+                  <div className="p-4 text-center">
+                    <span className="text-sm font-semibold text-white">{item.label}</span>
+                  </div>
+                </motion.div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-navy-900/50">
+        <div className="max-w-7xl mx-auto px-6">
+          <SectionHeading
+            label="FFE Equipment"
+            title="Fire Fighting Equipment We Service"
+          />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { img: '/images/fire.jpg', label: 'Fire Extinguishers' },
+              { img: '/images/service-fire-extinguishers.jpg', label: 'Fire Suppression' },
+              { img: '/images/new-project-5.jpg', label: 'Fire Detection' },
+              { img: '/images/service-fire.png', label: 'Fire Hoses & Pumps' },
             ].map((item, i) => (
               <FadeIn key={item.label} delay={i * 0.1}>
                 <motion.div whileHover={{ y: -4 }} className="glass rounded-xl overflow-hidden">

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <circle cx="60" cy="60" r="58" stroke="#3b82f6" stroke-width="2" fill="#0a1628"/>
+  <circle cx="60" cy="60" r="50" stroke="#3b82f6" stroke-width="1" fill="none" opacity="0.5"/>
+  <text x="60" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#3b82f6">NIMASA</text>
+  <text x="60" y="72" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#94a3b8">Nigerian Maritime</text>
+  <text x="60" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="7" fill="#94a3b8">Admin. &amp; Safety</text>
+</svg>

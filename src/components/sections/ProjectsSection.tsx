@@ -38,7 +38,7 @@ export default function ProjectsSection() {
                   <h3 className="font-display text-lg font-bold text-white mb-2 group-hover:text-brand-gold transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-sm text-slate-500 leading-relaxed">{project.desc}</p>
+                  <p className="text-sm text-slate-300 leading-relaxed">{project.desc}</p>
                 </div>
               </motion.div>
             </FadeIn>

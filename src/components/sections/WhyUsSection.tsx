@@ -30,7 +30,7 @@ export default function WhyUsSection() {
                     <Icon size={28} className="text-brand-red" />
                   </div>
                   <h3 className="font-display text-lg font-bold text-white mb-3">{item.title}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
+                  <p className="text-sm text-slate-300 leading-relaxed">{item.desc}</p>
                 </div>
               </FadeIn>
             )

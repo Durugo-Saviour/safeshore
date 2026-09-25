@@ -42,7 +42,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
-            className="text-lg text-slate-400 leading-relaxed mb-10 max-w-xl"
+            className="text-lg text-slate-300 leading-relaxed mb-10 max-w-xl"
           >
             {company.subtitle}. Delivering critical inspection, maintenance, testing, and statutory recertification across Nigeria's Oil & Gas and Maritime sectors.
           </motion.p>
@@ -83,7 +83,7 @@ export default function HeroSection() {
                 className={`py-4 md:py-8 text-center ${i < stats.length - 1 ? 'md:border-r border-white/5' : ''} ${i % 2 === 0 ? 'border-r border-white/5' : ''} ${i < 2 ? 'border-b border-white/5 md:border-b-0' : ''}`}
               >
                 <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-                <div className="text-xs text-slate-500 uppercase tracking-wider mt-2 font-medium">
+                <div className="text-xs text-slate-300 uppercase tracking-wider mt-2 font-medium">
                   {stat.label}
                 </div>
               </div>
@@ -102,7 +102,7 @@ export default function HeroSection() {
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
         >
-          <ChevronDown className="text-slate-500" size={24} />
+          <ChevronDown className="text-slate-400" size={24} />
         </motion.div>
       </motion.div>
     </section>

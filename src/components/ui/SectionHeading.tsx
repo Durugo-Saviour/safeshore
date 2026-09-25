@@ -24,7 +24,7 @@ export default function SectionHeading({ label, title, description, light }: Sec
         {title}
       </h2>
       {description && (
-        <p className={`text-lg leading-relaxed ${light ? 'text-slate-400' : 'text-slate-500'}`}>
+        <p className={`text-lg leading-relaxed ${light ? 'text-slate-300' : 'text-slate-400'}`}>
           {description}
         </p>
       )}

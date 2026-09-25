@@ -1,7 +1,14 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { company, navLinks } from '../../data/content'
 
 export default function Footer() {
+  const navigate = useNavigate()
+
+  const handleLinkClick = (path: string) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    navigate(path)
+  }
+
   return (
     <footer className="relative bg-navy-900 border-t border-white/5 pt-20 pb-8">
       <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
@@ -15,7 +22,7 @@ export default function Footer() {
                 <div className="text-[10px] text-brand-gold tracking-widest uppercase">{company.tagline}</div>
               </div>
             </Link>
-            <p className="text-sm text-slate-500 leading-relaxed mb-6">
+            <p className="text-sm text-slate-300 leading-relaxed mb-6">
               Premier Nigerian marine and offshore safety, firefighting & asset integrity solutions. CAC Reg: {company.cac}
             </p>
           </div>
@@ -25,9 +32,12 @@ export default function Footer() {
             <ul className="space-y-3">
               {navLinks.map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="text-sm text-slate-500 hover:text-brand-gold transition-colors">
+                  <button
+                    onClick={() => handleLinkClick(link.path)}
+                    className="text-sm text-slate-300 hover:text-brand-gold transition-colors text-left w-full"
+                  >
                     {link.label}
-                  </Link>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -35,17 +45,45 @@ export default function Footer() {
 
           <div>
             <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-5">Services</h4>
-            <ul className="space-y-3 text-sm text-slate-500">
-              <li><Link to="/services#lsa" className="hover:text-brand-gold transition-colors">Life-Saving Appliances</Link></li>
-              <li><Link to="/services#ffe" className="hover:text-brand-gold transition-colors">Fire Fighting Equipment</Link></li>
-              <li><Link to="/services#marine" className="hover:text-brand-gold transition-colors">Marine & NDT</Link></li>
-              <li><Link to="/services#platform" className="hover:text-brand-gold transition-colors">Platform Revamp</Link></li>
+            <ul className="space-y-3 text-sm text-slate-300">
+              <li>
+                <button
+                  onClick={() => handleLinkClick('/services#lsa')}
+                  className="hover:text-brand-gold transition-colors text-left"
+                >
+                  Life-Saving Appliances
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleLinkClick('/services#ffe')}
+                  className="hover:text-brand-gold transition-colors text-left"
+                >
+                  Fire Fighting Equipment
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleLinkClick('/services#marine')}
+                  className="hover:text-brand-gold transition-colors text-left"
+                >
+                  Marine & NDT
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleLinkClick('/services#platform')}
+                  className="hover:text-brand-gold transition-colors text-left"
+                >
+                  Platform Revamp
+                </button>
+              </li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-white font-semibold text-sm uppercase tracking-wider mb-5">Contact</h4>
-            <ul className="space-y-3 text-sm text-slate-500">
+            <ul className="space-y-3 text-sm text-slate-300">
               {company.phones.map((phone) => (
                 <li key={phone}>
                   <a href={`tel:${phone.replace(/\s/g, '')}`} className="hover:text-brand-gold transition-colors">{phone}</a>

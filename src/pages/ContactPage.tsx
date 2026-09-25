@@ -38,7 +38,7 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-slate-400 max-w-2xl mx-auto"
+            className="text-lg text-slate-300 max-w-2xl mx-auto"
           >
             Ready to discuss your safety requirements? Our team responds promptly.
           </motion.p>
@@ -52,7 +52,7 @@ export default function ContactPage() {
               <h2 className="font-display text-3xl font-bold text-white mb-6">
                 Let's Discuss Your Safety Needs
               </h2>
-              <p className="text-slate-400 leading-relaxed mb-10">
+              <p className="text-slate-300 leading-relaxed mb-10">
                 Whether you need liferaft recertification, fire fighting equipment servicing, or a comprehensive safety audit — our team is ready to help.
               </p>
 
@@ -70,11 +70,11 @@ export default function ContactPage() {
                     <h4 className="text-white font-semibold mb-2">{item.title}</h4>
                     {item.content.map((line, i) => (
                       item.links ? (
-                        <a key={line} href={item.links[i]} className="block text-sm text-slate-500 hover:text-brand-gold transition-colors">
+                        <a key={line} href={item.links[i]} className="block text-sm text-slate-400 hover:text-brand-gold transition-colors">
                           {line}
                         </a>
                       ) : (
-                        <p key={line} className="text-sm text-slate-500">{line}</p>
+                        <p key={line} className="text-sm text-slate-400">{line}</p>
                       )
                     ))}
                   </div>
@@ -87,26 +87,26 @@ export default function ContactPage() {
                 <h3 className="font-display text-xl font-bold text-white mb-6">Send Us a Message</h3>
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-400 mb-2">First Name *</label>
+                    <label className="block text-xs font-semibold text-slate-300 mb-2">First Name *</label>
                     <input required type="text" className="w-full px-4 py-3 bg-navy-950/50 border border-white/10 rounded-xl text-white text-sm focus:border-brand-red focus:outline-none transition-colors" placeholder="John" />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-400 mb-2">Last Name *</label>
+                    <label className="block text-xs font-semibold text-slate-300 mb-2">Last Name *</label>
                     <input required type="text" className="w-full px-4 py-3 bg-navy-950/50 border border-white/10 rounded-xl text-white text-sm focus:border-brand-red focus:outline-none transition-colors" placeholder="Doe" />
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-400 mb-2">Email *</label>
+                    <label className="block text-xs font-semibold text-slate-300 mb-2">Email *</label>
                     <input required type="email" className="w-full px-4 py-3 bg-navy-950/50 border border-white/10 rounded-xl text-white text-sm focus:border-brand-red focus:outline-none transition-colors" placeholder="john@company.com" />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-400 mb-2">Phone</label>
+                    <label className="block text-xs font-semibold text-slate-300 mb-2">Phone</label>
                     <input type="tel" className="w-full px-4 py-3 bg-navy-950/50 border border-white/10 rounded-xl text-white text-sm focus:border-brand-red focus:outline-none transition-colors" placeholder="+234 xxx xxx xxxx" />
                   </div>
                 </div>
                 <div className="mb-4">
-                  <label className="block text-xs font-semibold text-slate-400 mb-2">Service of Interest</label>
+                  <label className="block text-xs font-semibold text-slate-300 mb-2">Service of Interest</label>
                   <select className="w-full px-4 py-3 bg-navy-950/50 border border-white/10 rounded-xl text-white text-sm focus:border-brand-red focus:outline-none transition-colors">
                     <option value="">Select a service...</option>
                     <option value="lsa">Life-Saving Appliances (LSA)</option>
@@ -117,7 +117,7 @@ export default function ContactPage() {
                   </select>
                 </div>
                 <div className="mb-6">
-                  <label className="block text-xs font-semibold text-slate-400 mb-2">Message *</label>
+                  <label className="block text-xs font-semibold text-slate-300 mb-2">Message *</label>
                   <textarea required rows={4} className="w-full px-4 py-3 bg-navy-950/50 border border-white/10 rounded-xl text-white text-sm focus:border-brand-red focus:outline-none transition-colors resize-none" placeholder="Tell us about your project..." />
                 </div>
                 <motion.button

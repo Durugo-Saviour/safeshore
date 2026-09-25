@@ -97,6 +97,7 @@ export default function Navbar() {
               <Link
                 key={link.path}
                 to={link.path}
+                onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
                 className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-lg ${
                   location.pathname === link.path
                     ? 'text-white'
@@ -114,6 +115,7 @@ export default function Navbar() {
             ))}
             <Link
               to="/contact"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
               className="ml-3 flex items-center gap-2 px-5 py-2.5 bg-brand-red text-white text-sm font-semibold rounded-lg hover:bg-red-700 transition-all hover:shadow-lg hover:shadow-red-500/25"
             >
               <Phone size={14} />
@@ -168,6 +170,10 @@ export default function Navbar() {
                   >
                     <Link
                       to={link.path}
+                      onClick={() => {
+                        setMobileOpen(false)
+                        window.scrollTo({ top: 0, behavior: 'instant' })
+                      }}
                       className={`block text-4xl sm:text-5xl font-display font-bold transition-colors ${
                         location.pathname === link.path
                           ? 'text-brand-red'
@@ -188,6 +194,10 @@ export default function Navbar() {
                 >
                   <Link
                     to="/contact"
+                    onClick={() => {
+                      setMobileOpen(false)
+                      window.scrollTo({ top: 0, behavior: 'instant' })
+                    }}
                     className="inline-flex items-center gap-3 px-8 py-4 bg-brand-red text-white text-lg font-semibold rounded-xl hover:bg-red-700 transition-all hover:shadow-lg hover:shadow-red-500/25"
                   >
                     <Phone size={18} />

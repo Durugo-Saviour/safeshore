@@ -63,7 +63,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-slate-400 max-w-2xl mx-auto"
+            className="text-lg text-slate-300 max-w-2xl mx-auto"
           >
             Premier Nigerian marine and safety asset integrity specialist. CAC Reg: {company.cac}
           </motion.p>
@@ -89,13 +89,13 @@ export default function AboutPage() {
             </FadeIn>
             <FadeIn delay={0.2}>
               <h2 className="font-display text-3xl font-bold text-white mb-6">Executive Profile</h2>
-              <p className="text-slate-400 leading-relaxed mb-4">
+              <p className="text-slate-300 leading-relaxed mb-4">
                 Shoresafe Services Ltd delivers critical, end-to-end inspection, maintenance, testing, and statutory recertification services for Life-Saving Appliances and Fire Fighting Equipment across the Oil & Gas and Maritime sectors.
               </p>
-              <p className="text-slate-500 leading-relaxed mb-4">
+              <p className="text-slate-300 leading-relaxed mb-4">
                 Established in {company.established} and proudly Nigerian-owned, Shoresafe was conceived to bridge the noticeable safety gaps in Marine and Oil & Gas sectors. Our mission is to eliminate operational downtime, guarantee regulatory compliance, and safeguard offshore personnel and high-value energy infrastructure.
               </p>
-              <p className="text-slate-500 leading-relaxed">
+              <p className="text-slate-300 leading-relaxed">
                 In high-risk maritime environments, operational continuity relies on uncompromising safety equipment ready to be deployed at any given time.
               </p>
             </FadeIn>
@@ -117,7 +117,7 @@ export default function AboutPage() {
                 <div className="glass rounded-2xl p-8 h-full hover:bg-white/10 transition-all">
                   <item.icon size={28} className="text-brand-red mb-4" />
                   <h3 className="font-display text-lg font-bold text-white mb-3">{item.title}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
+                  <p className="text-sm text-slate-400 leading-relaxed">{item.desc}</p>
                 </div>
               </FadeIn>
             ))}
@@ -160,7 +160,7 @@ export default function AboutPage() {
                   </div>
                   <div>
                     <h3 className="font-display text-lg font-bold text-white mb-2">{item.title}</h3>
-                    <p className="text-sm text-slate-500 leading-relaxed">{item.desc}</p>
+                  <p className="text-sm text-slate-300 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               </FadeIn>

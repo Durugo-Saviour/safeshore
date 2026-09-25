@@ -60,7 +60,7 @@ export default function ProjectsPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-slate-400 max-w-2xl mx-auto"
+            className="text-lg text-slate-300 max-w-2xl mx-auto"
           >
             Successfully delivered complex maintenance and safety refitting projects across Nigeria's oil & gas sector.
           </motion.p>
@@ -93,7 +93,7 @@ export default function ProjectsPage() {
                     <h3 className="font-display text-lg font-bold text-white mb-2 group-hover:text-brand-gold transition-colors">
                       {project.title}
                     </h3>
-                    <p className="text-sm text-slate-500 leading-relaxed">{project.desc}</p>
+                    <p className="text-sm text-slate-300 leading-relaxed">{project.desc}</p>
                   </div>
                 </motion.div>
               </FadeIn>

@@ -38,7 +38,7 @@ export default function AboutSection() {
                 className="absolute -bottom-6 -right-6 glass-strong rounded-2xl p-6 glow-red"
               >
                 <div className="font-display text-4xl font-bold text-brand-gold">{company.established}</div>
-                <div className="text-sm text-slate-400">Established</div>
+                <div className="text-sm text-slate-300">Established</div>
               </motion.div>
             </div>
           </FadeIn>
@@ -48,10 +48,10 @@ export default function AboutSection() {
               label="About Shoresafe"
               title="Your Trusted Partner in Offshore Safety"
             />
-            <p className="text-slate-400 leading-relaxed mb-6 -mt-8">
+            <p className="text-slate-300 leading-relaxed mb-6 -mt-8">
               {company.name} is a premier Nigerian marine and safety asset integrity specialist, situated in the heart of Port Harcourt — Nigeria's main hub for oil and gas activities.
             </p>
-            <p className="text-slate-500 leading-relaxed mb-8">
+            <p className="text-slate-300 leading-relaxed mb-8">
               We deliver end-to-end inspection, maintenance, testing, and statutory recertification for Life-Saving Appliances and Fire Fighting Equipment, eliminating operational downtime and guaranteeing regulatory compliance.
             </p>
 
@@ -67,7 +67,7 @@ export default function AboutSection() {
                 >
                   <f.icon size={20} className="text-brand-red mb-2 group-hover:scale-110 transition-transform" />
                   <h4 className="text-white text-sm font-semibold mb-1">{f.title}</h4>
-                  <p className="text-xs text-slate-500">{f.desc}</p>
+                  <p className="text-xs text-slate-300">{f.desc}</p>
                 </motion.div>
               ))}
             </div>

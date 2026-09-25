@@ -23,11 +23,12 @@ export const services = [
     id: 'lsa',
     number: '01',
     title: 'Life-Saving Appliances (LSA)',
-    description: 'Full inspection, servicing, load testing, and recertification of liferafts, lifeboats, rescue boats, and davit launch systems.',
+    description: 'Full inspection, servicing, load testing, and recertification of liferafts, lifeboats, rescue boats, SCBA units, EEBDs, and davit launch systems.',
     image: '/images/liferafts.jpg',
     items: [
       'Survival Craft: Liferafts, Lifeboats, Rescue Boats',
       'Personal Safety Gear: Life Jackets, Immersion Suits',
+      'SCBA units, EEBDs & Medical Oxygen Cylinders',
       'Load testing and statutory recertification',
     ],
   },
@@ -35,13 +36,13 @@ export const services = [
     id: 'ffe',
     number: '02',
     title: 'Fire Fighting Equipment (FFE)',
-    description: 'Turnkey testing and servicing of CO₂ systems, fire pumps, SCBA units, EEBDs, fire extinguishers, and detection systems.',
+    description: 'Turnkey testing and servicing of CO₂ systems, fire pumps, fire extinguishers, fire detection systems, fire alarms, and fireman suits.',
     image: '/images/service-fire-extinguishers.jpg',
     items: [
       'Portable & wheeled fire extinguishers',
       'Engine Room Fixed CO₂ suppression systems',
-      'SCBA units, EEBDs & Medical Oxygen Cylinders',
-      'Fire detection systems and alarm networks',
+      'Fire detection systems, alarms & fire blankets',
+      'Fireman suits, fire hoses & fire pumps',
     ],
   },
   {
@@ -62,7 +63,7 @@ export const services = [
     number: '04',
     title: 'Platform Revamp',
     description: 'Onshore and offshore platform upgrades — modifying, upgrading, repairing or extending existing facilities.',
-    image: '/images/service-fabrication.jpg',
+    image: '/images/project-loadtest.jpg',
     items: [
       'Engineering assessment & modifications',
       'Fabrication & installation',
@@ -98,7 +99,14 @@ export const certifications = [
   { code: '45001', title: 'ISO 45001:2018', desc: 'Occupational Health & Safety', icon: 'ShieldCheck' },
 ]
 
-export const regulatory = ['NUPRC', 'NIMASA', 'NCDMB', 'NMDPRA', 'SOLAS', 'SON']
+export const regulatory = [
+  { name: 'NUPRC', logo: '/images/logo-nuprc.svg' },
+  { name: 'NIMASA', logo: '/images/logo-nimasa.svg' },
+  { name: 'NCDMB', logo: '/images/logo-ncdmb.svg' },
+  { name: 'NMDPRA', logo: '/images/logo-nmdpra.svg' },
+  { name: 'SOLAS', logo: '/images/logo-solas.svg' },
+  { name: 'SON', logo: '/images/logo-son.svg' },
+]
 
 export const projects = [
   {
@@ -170,14 +178,14 @@ export const projects = [
 ]
 
 export const clients = [
-  'Bourbon Interoil Nig. Ltd.',
-  'Selective Marine Oil & Gas Ltd.',
-  'Oando Energy Services Ltd (OES)',
-  'Nembe Crude Oil Export Terminal Ltd',
-  'TOTAL GAP Ltd.',
-  'FINOA ENERGIES LTD.',
-  'ABC MARITIME LTD',
-  'Regional Maritime Operators',
+  { name: 'Bourbon Interoil Nig. Ltd.', logo: '/images/client-bourbon.svg' },
+  { name: 'Selective Marine Oil & Gas Ltd.', logo: '/images/client-selective.svg' },
+  { name: 'Oando Energy Services Ltd (OES)', logo: '/images/client-oando.svg' },
+  { name: 'Nembe Crude Oil Export Terminal Ltd', logo: '/images/client-nembe.svg' },
+  { name: 'TOTAL GAP Ltd.', logo: '/images/client-total.svg' },
+  { name: 'FINOA ENERGIES LTD.', logo: '/images/client-finoa.svg' },
+  { name: 'ABC MARITIME LTD', logo: '/images/client-abc.svg' },
+  { name: 'Regional Maritime Operators', logo: '/images/client-regional.svg' },
 ]
 
 export const gallery = [
